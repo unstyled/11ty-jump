@@ -49,13 +49,13 @@
   <body>
     {{ content | safe }}
 
-    <footer class="tdbc-background--secondary">
+    <footer class="tdbc-background--primary">
       <div class="tdbc-container tdbc-text-align-center">
         <div class="tdbc-row tdbc-ink--light tdbc-mx-auto">
-          <p class="tdbc-mb-none">&copy; {% year %} {{ meta.siteName }} • {{ pkg.version }}</p>
+          <p class="tdbc-mb-none">&copy; 2003-{% year %} {{ meta.siteName }} • {{ pkg.version }}</p>
           <span class="tdbc-row tdbc-row--center-content">
             <a
-              href="https://twitter.com/{{ meta.twitterUsername }}/"
+              href="https://twitter.com/{{ meta.twitterUsername }}"
               class="tdbc-icon-button tdbc-ink--light"
               aria-label="Twitter"
             >
