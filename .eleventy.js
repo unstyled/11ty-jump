@@ -7,6 +7,7 @@ const eleventySass = require("@11tyrocks/eleventy-plugin-sass-lightningcss");
 const slugify = require("slugify");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
+const fs = require('fs');
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(syntaxHighlight);
@@ -36,6 +37,18 @@ module.exports = function (eleventyConfig) {
       }),
   });
   eleventyConfig.setLibrary("md", markdownLibrary);
+
+  let getSvgContent = function (file) {
+    let relativeFilePath = `./src/svg/${file}.svg`;
+    let data = fs.readFileSync(relativeFilePath, 
+    function(err, contents) {
+       if (err) return err
+       return contents
+    });
+
+    return data.toString('utf8');
+  }
+  eleventyConfig.addShortcode("svg", getSvgContent);
 
   return {
     dir: {
