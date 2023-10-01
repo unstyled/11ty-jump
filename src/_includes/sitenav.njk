@@ -11,7 +11,7 @@
         <a
           {% if currentUrl === link.url %}aria-current="page"{% endif %}
           href="{{ link.url }}">
-            {{ link.data.title }}
+            {{ link.data.navigation }}
         </a>
       </li>
       {%- endfor %}

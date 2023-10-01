@@ -1,6 +1,7 @@
 ---
 title: "About Unstyled"
 description: 'Find out what Unstyled is all about'
+navigation: 'About'
 ---
 
 With over 20 years of experience designing, developing and publishing online, Si has established himself as an expert in the tech industry, working with a range of high profile companies such as UEFA, Yahoo! and ASOS.

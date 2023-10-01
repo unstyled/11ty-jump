@@ -1,6 +1,7 @@
 ---
 title: "Contact Us"
 description: 'Get in touch with Unstyled about your project'
+navigation: 'Contact'
 ---
 
 If you are interested in having your very own Unstyled project, please get in contact.
