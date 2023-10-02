@@ -3,7 +3,14 @@
 {%- set pageTitle %}{% if title %}{{ title }} | {% endif %}{{ meta.siteName }}{% endset -%}
 {%- set pageDescription %}{% if description %}{{ description }}{% else %}{{ meta.siteDescription }}{% endif %}{% endset -%}
   <head>
-    <!-- Generated from the 11ty Netlify Jumpstart: https://github.com/5t3ph/11ty-netlify-jumpstart -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-91583-11"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-91583-11');
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content="{{ eleventy.generator }}" />
