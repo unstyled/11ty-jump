@@ -53,7 +53,7 @@
       href="/feed/"
     />
   </head>
-  <body>
+  <body{% if backgroundColor %} class="has-custom-background" style="--page-background-color: {{ backgroundColor }};"{% endif %}>
     {{ content | safe }}
 
     <footer class="tdbc-background--secondary">
