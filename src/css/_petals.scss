@@ -1,0 +1,95 @@
+@use "theme" as *;
+
+body.has-custom-background {
+  background-color: var(--page-background-color);
+}
+
+body.has-custom-background .tdbc-hero,
+body.has-custom-background main,
+body.has-custom-background footer {
+  background-color: transparent;
+}
+
+.petals-app-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.petals-episodes {
+  margin-top: 3rem;
+}
+
+.petals-episodes__title {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.petals-episodes__empty {
+  text-align: center;
+}
+
+.petals-episodes__list {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.petals-episodes__item {
+  height: 100%;
+}
+
+.petals-episodes__card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0.5rem 1.5rem rgba(23, 35, 61, 0.1);
+  overflow: hidden;
+}
+
+.petals-episodes__art {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.petals-episodes__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.5rem;
+  padding: 1.5rem;
+}
+
+.petals-episodes__name {
+  font-size: clamp(1.1rem, 1.2vw + 1rem, 1.5rem);
+  margin: 0;
+}
+
+.petals-episodes__date {
+  margin: 0;
+  color: tdbc-color("gray");
+}
+
+.petals-episodes__actions {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.petals-episodes__link {
+  font-weight: 600;
+  color: tdbc-color("primary");
+}
+
+.petals-episodes__link:hover,
+.petals-episodes__link:focus {
+  text-decoration: underline;
+}
