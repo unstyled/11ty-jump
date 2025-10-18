@@ -1,43 +1,109 @@
 const fs = require("fs");
 const path = require("path");
 
-const LOOKUP_URL = "https://itunes.apple.com/lookup?id=1698197915&entity=podcastEpisode&limit=12";
+const FEED_URL = "https://pinecast.com/feed/petals";
 const CACHE_DIR = path.join(__dirname, "..", "..", ".cache");
 const CACHE_FILE = path.join(CACHE_DIR, "petals-episodes.json");
 const CACHE_TTL = 1000 * 60 * 60; // 1 hour
 
+function decodeHtmlEntities(value = "") {
+  return value
+    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/&nbsp;/g, " ")
+    .trim();
+}
+
+function extractTagContent(xml = "", tag) {
+  if (!tag) {
+    return "";
+  }
+
+  const regex = new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`, "i");
+  const match = xml.match(regex);
+
+  if (!match) {
+    return "";
+  }
+
+  return decodeHtmlEntities(match[1] || "");
+}
+
+function extractAttribute(xml = "", tag, attribute) {
+  if (!tag || !attribute) {
+    return "";
+  }
+
+  const regex = new RegExp(`<${tag}[^>]*${attribute}="([^"]+)"[^>]*?>`, "i");
+  const match = xml.match(regex);
+
+  if (!match) {
+    return "";
+  }
+
+  return decodeHtmlEntities(match[1] || "");
+}
+
+function parseEpisodesFromFeed(xml = "") {
+  if (!xml) {
+    return [];
+  }
+
+  const defaultArtwork =
+    extractAttribute(xml, "itunes:image", "href") || extractTagContent(xml, "url");
+
+  const items = [];
+  const itemRegex = /<item[\s>][\s\S]*?<\/item>/gi;
+  let match;
+
+  while ((match = itemRegex.exec(xml))) {
+    const itemXml = match[0];
+    const title = extractTagContent(itemXml, "title") || "Untitled Episode";
+    const link = extractTagContent(itemXml, "link");
+    const guid = extractTagContent(itemXml, "guid");
+    const releaseDate = extractTagContent(itemXml, "pubDate");
+    const description = extractTagContent(itemXml, "description");
+    const artwork =
+      extractAttribute(itemXml, "itunes:image", "href") ||
+      extractTagContent(itemXml, "itunes:image") ||
+      defaultArtwork ||
+      null;
+    const enclosure = extractAttribute(itemXml, "enclosure", "url");
+
+    const query = encodeURIComponent(`${title} PETALS Podcast`);
+
+    items.push({
+      id: guid || link || title,
+      title,
+      artwork,
+      releaseDate,
+      description,
+      links: {
+        rss: link || enclosure || FEED_URL,
+        apple: `https://podcasts.apple.com/us/podcast/petals/id1698197915`,
+        spotify: `https://open.spotify.com/search/${query}`,
+        youtube: `https://www.youtube.com/results?search_query=${query}`,
+      },
+    });
+  }
+
+  return items;
+}
+
 async function fetchEpisodes() {
-  const response = await fetch(LOOKUP_URL);
+  const response = await fetch(FEED_URL);
 
   if (!response.ok) {
     throw new Error(`Request failed with status ${response.status}`);
   }
 
-  const payload = await response.json();
-  const results = Array.isArray(payload.results) ? payload.results : [];
-
-  return results
-    .filter((item) => item.wrapperType === "track" && item.kind === "podcast-episode")
-    .map((item) => {
-      const title = item.trackName || item.collectionName || "Untitled Episode";
-      const releaseDate = item.releaseDate || item.releaseDateTime;
-      const artwork = item.artworkUrl600 || item.artworkUrl160 || null;
-      const appleUrl = item.trackViewUrl || item.collectionViewUrl || null;
-      const query = encodeURIComponent(`${title} PETALS Podcast`);
-
-      return {
-        id: item.trackId || item.trackGuid || title,
-        title,
-        artwork,
-        releaseDate,
-        description: item.shortDescription || item.description || "",
-        links: {
-          apple: appleUrl,
-          spotify: `https://open.spotify.com/search/${query}`,
-          youtube: `https://www.youtube.com/results?search_query=${query}`,
-        },
-      };
-    });
+  const xml = await response.text();
+  return parseEpisodesFromFeed(xml).slice(0, 10);
 }
 
 function ensureCacheDir() {
