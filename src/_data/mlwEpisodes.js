@@ -1,11 +1,11 @@
 const fs = require("fs");
 const path = require("path");
 
-const FEED_URL = "https://pinecast.com/feed/petals";
+const FEED_URL = "https://pinecast.com/feed/make-life-work";
 const CACHE_DIR = path.join(__dirname, "..", "..", ".cache");
-const CACHE_FILE = path.join(CACHE_DIR, "petals-episodes.json");
+const CACHE_FILE = path.join(CACHE_DIR, "mlw-episodes.json");
 const CACHE_TTL = 1000 * 60 * 60; // 1 hour
-const FALLBACK_FILE = path.join(__dirname, "petalsEpisodes.fallback.json");
+const FALLBACK_FILE = path.join(__dirname, "mlwEpisodes.fallback.json");
 
 function decodeHtmlEntities(value = "") {
   return value
@@ -25,7 +25,7 @@ function extractTagContent(xml = "", tag) {
     return "";
   }
 
-  const regex = new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`, "i");
+  const regex = new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\/${tag}>`, "i");
   const match = xml.match(regex);
 
   if (!match) {
@@ -76,7 +76,7 @@ function parseEpisodesFromFeed(xml = "") {
       null;
     const enclosure = extractAttribute(itemXml, "enclosure", "url");
 
-    const query = encodeURIComponent(`${title} PETALS Podcast`);
+    const query = encodeURIComponent(`${title} "Make Life Work" podcast`);
 
     items.push({
       id: guid || link || title,
@@ -86,7 +86,7 @@ function parseEpisodesFromFeed(xml = "") {
       description,
       links: {
         rss: link || enclosure || FEED_URL,
-        apple: `https://podcasts.apple.com/us/podcast/petals/id1698197915`,
+        apple: `https://podcasts.apple.com/us/podcast/make-life-work/id1490247567`,
         spotify: `https://open.spotify.com/search/${query}`,
         youtube: `https://www.youtube.com/results?search_query=${query}`,
       },
@@ -137,7 +137,7 @@ function readCache() {
       return parsed;
     }
   } catch (error) {
-    console.error("Failed to read cached PETALS episodes", error);
+    console.error("Failed to read cached MLW episodes", error);
   }
 
   return [];
@@ -148,7 +148,7 @@ function writeCache(data) {
     ensureCacheDir();
     fs.writeFileSync(CACHE_FILE, JSON.stringify(data, null, 2), "utf8");
   } catch (error) {
-    console.error("Failed to cache PETALS episodes", error);
+    console.error("Failed to cache MLW episodes", error);
   }
 }
 
@@ -165,13 +165,13 @@ function readFallback() {
       return parsed;
     }
   } catch (error) {
-    console.error("Failed to read fallback PETALS episodes", error);
+    console.error("Failed to read fallback MLW episodes", error);
   }
 
   return [];
 }
 
-module.exports = async function petalsEpisodes() {
+module.exports = async function mlwEpisodes() {
   if (isCacheValid()) {
     return readCache();
   }
@@ -181,7 +181,7 @@ module.exports = async function petalsEpisodes() {
     writeCache(episodes);
     return episodes;
   } catch (error) {
-    console.warn("Failed to fetch PETALS episodes", error);
+    console.warn("Failed to fetch MLW episodes", error);
     const fallback = readCache();
 
     if (fallback.length > 0) {
@@ -198,3 +198,5 @@ module.exports = async function petalsEpisodes() {
     return [];
   }
 };
+
+

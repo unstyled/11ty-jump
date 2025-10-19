@@ -44,6 +44,7 @@ module.exports = function (eleventyConfig) {
         { key: "spotify", label: "Spotify" },
         { key: "youtube", label: "YouTube" },
         { key: "apple", label: "Apple Podcasts" },
+        { key: "rss", label: "RSS" },
       ];
 
       return entries
@@ -59,7 +60,7 @@ module.exports = function (eleventyConfig) {
     };
 
     const items = episodes
-      .slice(0, 12)
+      .slice(0, 10)
       .map((episode) => {
         const title = escapeHtml(episode.title || "Untitled Episode");
         const artwork = episode.artwork
