@@ -5,6 +5,7 @@ const FEED_URL = "https://pinecast.com/feed/petals";
 const CACHE_DIR = path.join(__dirname, "..", "..", ".cache");
 const CACHE_FILE = path.join(CACHE_DIR, "petals-episodes.json");
 const CACHE_TTL = 1000 * 60 * 60; // 1 hour
+const FALLBACK_FILE = path.join(__dirname, "petalsEpisodes.fallback.json");
 
 function decodeHtmlEntities(value = "") {
   return value
@@ -151,6 +152,25 @@ function writeCache(data) {
   }
 }
 
+function readFallback() {
+  if (!fs.existsSync(FALLBACK_FILE)) {
+    return [];
+  }
+
+  try {
+    const raw = fs.readFileSync(FALLBACK_FILE, "utf8");
+    const parsed = JSON.parse(raw);
+
+    if (Array.isArray(parsed)) {
+      return parsed;
+    }
+  } catch (error) {
+    console.error("Failed to read fallback PETALS episodes", error);
+  }
+
+  return [];
+}
+
 module.exports = async function petalsEpisodes() {
   if (isCacheValid()) {
     return readCache();
@@ -161,11 +181,18 @@ module.exports = async function petalsEpisodes() {
     writeCache(episodes);
     return episodes;
   } catch (error) {
-    console.error("Failed to fetch PETALS episodes", error);
+    console.warn("Failed to fetch PETALS episodes", error);
     const fallback = readCache();
 
     if (fallback.length > 0) {
       return fallback;
+    }
+
+    const fallbackData = readFallback();
+
+    if (fallbackData.length > 0) {
+      writeCache(fallbackData);
+      return fallbackData;
     }
 
     return [];
