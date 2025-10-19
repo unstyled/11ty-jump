@@ -1,0 +1,38 @@
+[
+  {
+    "id": "petals-episode-1",
+    "title": "Introducing the PETALS Framework",
+    "artwork": "https://example.com/petals-episode-1.jpg",
+    "releaseDate": "2023-08-01T00:00:00.000Z",
+    "description": "An overview of the PETALS framework and how it helps teams build sustainable products.",
+    "links": {
+      "apple": "https://podcasts.apple.com/podcast/petals/id1698197915?i=1000626512345",
+      "spotify": "https://open.spotify.com/episode/1",
+      "youtube": "https://www.youtube.com/watch?v=episode1"
+    }
+  },
+  {
+    "id": "petals-episode-2",
+    "title": "Designing Inclusive SaaS Teams",
+    "artwork": "https://example.com/petals-episode-2.jpg",
+    "releaseDate": "2023-08-15T00:00:00.000Z",
+    "description": "Lessons learned from building inclusive, people-first SaaS teams.",
+    "links": {
+      "apple": "https://podcasts.apple.com/podcast/petals/id1698197915?i=1000627896543",
+      "spotify": "https://open.spotify.com/episode/2",
+      "youtube": "https://www.youtube.com/watch?v=episode2"
+    }
+  },
+  {
+    "id": "petals-episode-3",
+    "title": "Working in Public: Behind the Scenes",
+    "artwork": "https://example.com/petals-episode-3.jpg",
+    "releaseDate": "2023-08-29T00:00:00.000Z",
+    "description": "A candid discussion about building PETALS in public and lessons from the journey so far.",
+    "links": {
+      "apple": "https://podcasts.apple.com/podcast/petals/id1698197915?i=1000628976543",
+      "spotify": "https://open.spotify.com/episode/3",
+      "youtube": "https://www.youtube.com/watch?v=episode3"
+    }
+  }
+]
