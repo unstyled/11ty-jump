@@ -2,9 +2,9 @@
 title: "Make Life Work Podcast"
 description: "Si Jobling explores how technologists balance their careers, families, and side projects across ten seasons of Make Life Work."
 layout: page.njk
-permalink: /make-life-work/
+permalink: /makelifework/
 navigation: "Make Life Work"
-backgroundColor: "#E9D8FD"
+backgroundColor: "#6B21A8"
 ---
 
 Make Life Work began as a simple idea: invite creative technologists to share how they balance personal passions with professional life. When lockdown hit in season two, the conversations quickly evolved, offering a candid look at how people navigated an entirely new world of remote work, family commitments, and disrupted routines.
