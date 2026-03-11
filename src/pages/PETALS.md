@@ -3,7 +3,7 @@ title: PETALS Podcast
 description: Behind the scenes insights into the PETALS framework, team health, building SaaS in public, and industry approaches.
 layout: page.njk
 permalink: /PETALS/
-backgroundColor: "#EDF2F7"
+backgroundColor: "#d8b4fe"
 ---
 
 The PETALS Podcast offers behind-the-scenes insights into the PETALS framework, including deep dives into team health, building SaaS in public, and industry conversations about team approaches.

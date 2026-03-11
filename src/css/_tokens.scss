@@ -1,0 +1,35 @@
+:root {
+  // Colour
+  --color-bg: #ffffff;
+  --color-text: #111111;
+  --color-muted: #6b7280;
+  --color-accent: #111111;
+  --color-border: #e5e7eb;
+  --color-surface: #f9fafb;
+
+  // Type
+  --font-sans: "Baloo 2", sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+  --text-sm:  0.875rem;
+  --text-base: clamp(1.0625rem, 0.5vw + 0.9375rem, 1.1875rem);
+  --text-lg:   clamp(1.375rem,  1vw  + 1.125rem,   1.75rem);
+  --text-xl:   clamp(2.25rem,   3vw  + 1.5rem,     3.5rem);
+  --text-2xl:  clamp(3rem,      5vw  + 1rem,        4.5rem);
+
+  --leading-tight: 1.15;
+  --leading-snug:  1.4;
+  --leading-body:  1.75;
+
+  // Spacing
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 8rem;
+
+  // Layout
+  --measure: 65ch;
+  --radius: 8px;
+}

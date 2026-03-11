@@ -1,44 +1,44 @@
-@use "sass:math";
-@use "theme" as *;
+.site-nav {
+  padding-block: var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
 
-#tdbc-siteid {
-  font-size: $tdbc-h3-font-size;
-  text-decoration: none;
-}
-
-.tdbc-sitenav {
-  background-color: tdbc-color("secondary");
-
-  &__container,
-  &__navlist {
+  &__inner {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-  }
-
-  &__container {
     justify-content: space-between;
-    width: 100%;
-    max-width: 120ch;
-    margin: 0 auto;
-    padding: 0.25rem 0.5rem;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
   }
 
-  &__navlist {
-    li + li {
-      margin-left: 0.5rem;
+  &__brand {
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--leading-tight);
+    text-decoration: none;
+    color: var(--color-text);
+
+    &:hover {
+      color: var(--color-accent);
     }
   }
 
-  &,
-  a:not(.tdbc-button) {
-    color: tdbc-color("light");
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--space-sm);
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
 
-  a:not(.tdbc-button):focus {
-    border-radius: math.div($tdbc-border-radius, 2);
-    outline-color: transparent;
-    outline-style: solid;
-    box-shadow: 0 0 1px 2px tdbc-color("light");
+  a:not(.site-nav__brand) {
+    color: var(--color-muted);
+    text-decoration: none;
+    font-size: var(--text-base);
+
+    &:hover,
+    &[aria-current="page"] {
+      color: var(--color-text);
+    }
   }
 }

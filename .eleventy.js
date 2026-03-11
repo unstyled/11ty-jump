@@ -27,6 +27,34 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("./src/favicon.png");
 
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
+
+  eleventyConfig.addShortcode("storyCard", (type, primary = "", secondary = "") => {
+    const safePrimary = escapeHtml(primary);
+    const safeSecondary = escapeHtml(secondary);
+
+    if (type === "stat") {
+      return `<aside class="story-card story-card--stat" aria-label="${safeSecondary || safePrimary}">
+        <span class="story-card__stat">${safePrimary}</span>
+        ${safeSecondary ? `<span class="story-card__label">${safeSecondary}</span>` : ""}
+      </aside>`;
+    }
+
+    if (type === "image") {
+      return `<figure class="story-card story-card--image">
+        <img src="${primary}" alt="${safeSecondary}" loading="lazy" />
+        ${safeSecondary ? `<figcaption class="story-card__caption">${safeSecondary}</figcaption>` : ""}
+      </figure>`;
+    }
+
+    if (type === "quote") {
+      return `<aside class="story-card story-card--quote">
+        <blockquote class="story-card__quote">${safePrimary}</blockquote>
+        ${safeSecondary ? `<cite class="story-card__cite">${safeSecondary}</cite>` : ""}
+      </aside>`;
+    }
+
+    return "";
+  });
   eleventyConfig.addShortcode("petalsEpisodes", (episodes = []) => {
     const formatter = new Intl.DateTimeFormat("en-US", { dateStyle: "medium" });
 

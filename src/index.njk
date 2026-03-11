@@ -1,62 +1,34 @@
 ---
 layout: base.njk
-templateEngineOverride: md, njk
 ---
+{% include 'sitenav.njk' %}
 
-{# A tiny extra style for the starter home page, intended to be removed as you customize to fit your own content! #}
+<main>
+  <div class="narrative">
+    <section class="home-intro">
+      <h1>We make things worth listening to.</h1>
 
-<style>
-  .logo {
-    width: 12vmax;
-    height: 12vmax;
-    margin: 0 auto 2rem;
-  }
+      <p>Unstyled is a small UK studio. We produce podcasts, build communities, and ship side projects — mostly late at night, occasionally at weekends.</p>
 
-  .logo svg {
-    width: 100%;
-    height: 100%;
-  }
+      <p>Si Jobling has been doing this since 2003. Two decades of making things on the internet.</p>
 
-  .tdbc-hero {
-    padding-top: 5vh;
-    padding-bottom: 5vh;
-  }
+      {% storyCard "stat", "20+", "years of making things online" %}
 
-  #quickstart + ol li:first-child,
-  #quickstart + ol li:first-child p {
-    font-size: 1.5rem;
-  }
-</style>
-<header class="tdbc-hero">
-  <div class="tdbc-container">
-    <span class="logo">
-      {% svg "unstyled-wave-white" %}
-    </span>
-    <h1 class="tdbc-ink--primary tdbc-mb-none">{{ meta.siteName }}</h1>
-    <h2 class="tdbc-lead tdbc-content-maxlength tdbc-ink--gray tdbc-mt-md tdbc-mx-auto">
-      {{ meta.siteDescription }}
-    </h2>
+      <p>You'll find podcasts for creative technologists, conversations about engineering leadership, and tools that scratch a particular itch. There's also a calendar for rugby fans who refuse to miss a match.</p>
+
+      <p>No sidebars. No noise. Just the work.</p>
+    </section>
+
+    <section class="home-projects">
+      <h2>The work</h2>
+      <ul class="projects-list" role="list">
+        {%- for project in collections.projects -%}
+        <li class="projects-list__item">
+          <a class="projects-list__link" href="{{ project.data.url or project.url }}">{{ project.data.title }}</a>
+          <p class="projects-list__desc">{{ project.data.description }}</p>
+        </li>
+        {%- endfor -%}
+      </ul>
+    </section>
   </div>
-</header>
-<main class="tdbc-container">
-  <div class="tdbc-section">
-    <ul class="tdbc-column-container">
-      {%- for page in collections.pages -%}
-      <li class="tdbc-card">
-        <div class="tdbc-card__content">
-          <a href="{{ page.url }}" class="tdbc-card__title">{{ page.data.title }}</a>
-          <p>{{ page.data.description }}</p>
-        </div>
-      </li>
-      {%- endfor -%}
-    </ul>
-  </div>
-  <style>
-    
-  </style>
-
-
-
-{{ content | safe }}
-
 </main>

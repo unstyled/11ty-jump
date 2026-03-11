@@ -1,19 +1,21 @@
 {% set currentUrl = page.url %}
 
-<nav class="tdbc-sitenav">
-  <div class="tdbc-sitenav__container">
-    <a id="tdbc-siteid" href="/"
-    {% if currentUrl === '/' %}aria-current="page"{% endif %}
+<nav class="site-nav">
+  <div class="narrative site-nav__inner">
+    <a class="site-nav__brand" href="/"
+      {% if currentUrl === '/' %}aria-current="page"{% endif %}
     >{{ meta.siteName }}</a>
-    <ul role="list" class="tdbc-sitenav__navlist tdbc-list-unstyled">
+    <ul class="site-nav__list" role="list">
       {% for link in collections.pages %}
+      {% if link.data.navigation %}
       <li>
         <a
+          href="{{ link.url }}"
           {% if currentUrl === link.url %}aria-current="page"{% endif %}
-          href="{{ link.url }}">
-            {{ link.data.navigation }}
-        </a>
+        >{{ link.data.navigation }}</a>
       </li>
-      {%- endfor %}
+      {% endif %}
+      {% endfor %}
     </ul>
+  </div>
 </nav>
