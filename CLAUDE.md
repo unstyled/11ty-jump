@@ -11,6 +11,17 @@ npm run build    # Production build
 
 There are no tests or linting configured.
 
+## Design direction
+
+The site uses a **conversational narrative UI**. Think of someone typing a story directly to the visitor.
+
+- Large bold type on a clean white background
+- Short, punchy sentences with generous breathing room
+- Single-column layout, max-width ~65ch
+- No sidebars, no busy layouts — content, rhythm, and occasional visual punctuation only
+- Inline "story cards" punctuate the narrative with images, stats, or subtle animations
+- Reflects the **Unstyled brand principle**: strip back to the essentials and let engaging content do the work
+
 ## Architecture
 
 This is an [Eleventy (11ty)](https://11ty.dev) static site for **Unstyled**, a UK studio producing podcast content. It deploys to Netlify with `public/` as the output directory.
