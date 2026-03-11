@@ -16,6 +16,7 @@
     <meta name="generator" content="{{ eleventy.generator }}" />
     <title>{{ pageTitle }}</title>
     <meta name="description" content="{{ pageDescription }}" />
+    <script>document.documentElement.classList.add('js')</script>
     <link rel="icon" href="{{ '/unstyled-favicon.png' | url }}" />
     <link href="{{ '/css/style.css' | url }}" rel="stylesheet" />
 
@@ -37,6 +38,7 @@
   <body{% if backgroundColor %} style="--color-accent: {{ backgroundColor }};"{% endif %}>
     {{ content | safe }}
 
+    <script src="{{ '/js/typewriter.js' | url }}" defer></script>
     <footer class="site-footer">
       <div class="narrative">
         <p>&copy; 2003&ndash;{% year %} {{ meta.siteName }}</p>
