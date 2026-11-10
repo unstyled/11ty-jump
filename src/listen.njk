@@ -1,0 +1,49 @@
+---
+layout: base.njk
+title: "Listen"
+description: "Sample episodes from Managing Engineers, House Finesse and Si Cast."
+tags: pages
+navigation: "Listen"
+permalink: /listen/
+---
+{% include 'sitenav.njk' %}
+
+<main>
+  <div class="narrative">
+    <section class="listen-intro">
+      <h1>Press play.</h1>
+      <p>A few samples from the shows we make. Chapters, transcripts and artwork included, the way podcasts should be.</p>
+    </section>
+  </div>
+
+  <div class="listen" data-listen>
+    <div class="listen__inner">
+      <section class="player" data-player aria-label="Audio player" hidden></section>
+
+      <section class="playlist" aria-label="Playlist">
+        {%- for show in listen.shows -%}
+        <h2 class="playlist__show">
+          <span class="art art--sm" style="--art: {{ show.colour }}" aria-hidden="true">{{ show.initials }}</span>
+          {{ show.name }}
+        </h2>
+        <ol class="playlist__list" role="list">
+          {%- for ep in show.episodes -%}
+          <li>
+            <button class="playlist__item" type="button" data-episode="{{ ep.id }}">
+              <span class="playlist__num">{{ ep.number }}</span>
+              <span class="playlist__title">{{ ep.title }}</span>
+              <span class="playlist__meta">{{ (ep.duration / 60) | round }} min</span>
+            </button>
+          </li>
+          {%- endfor -%}
+        </ol>
+        {%- endfor -%}
+      </section>
+
+      <noscript><p>The player needs JavaScript. The episodes above are placeholders for now.</p></noscript>
+    </div>
+  </div>
+</main>
+
+<script type="application/json" id="listen-data">{{ listen | dump | safe }}</script>
+<script src="{{ '/js/player.js' | url }}" defer></script>

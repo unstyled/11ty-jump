@@ -1,0 +1,145 @@
+{
+  "note": "Placeholder content. Swap `audio` for a real enclosure URL, and chapters/transcript for the Podcasting 2.0 feed data, when each show is wired up. Episodes with no `audio` play on a simulated timeline.",
+  "shows": [
+    {
+      "id": "managing-engineers",
+      "name": "Managing Engineers",
+      "tagline": "Engineering leadership, the hard way and the good way.",
+      "colour": "#1d4ed8",
+      "initials": "ME",
+      "episodes": [
+        {
+          "id": "me-001",
+          "number": 1,
+          "title": "Your first month as a manager",
+          "date": "2026-02-03",
+          "duration": 1860,
+          "summary": "What actually changes when you stop shipping code and start shipping people.",
+          "audio": "",
+          "chapters": [
+            { "start": 0, "title": "Cold open" },
+            { "start": 95, "title": "The promotion nobody prepares you for" },
+            { "start": 640, "title": "One-to-ones that aren't status updates" },
+            { "start": 1240, "title": "Letting go of the keyboard" },
+            { "start": 1710, "title": "What we'd tell our past selves" }
+          ],
+          "transcript": [
+            { "t": 0, "text": "Welcome to Managing Engineers. This is the show about the job nobody trains you for." },
+            { "t": 28, "text": "Today we're talking about the first month, because that's where most of the damage gets done." },
+            { "t": 95, "text": "Nobody sits you down and says, congratulations, you're no longer measured on the thing you're good at." },
+            { "t": 210, "text": "The first instinct is to keep coding. It feels productive. It's also the quickest way to stall your team." },
+            { "t": 420, "text": "So the question becomes: what does a good week look like when you've shipped nothing yourself?" },
+            { "t": 640, "text": "One-to-ones are the job. Not a meeting you squeeze between the real work." },
+            { "t": 860, "text": "Ask what's getting in the way. Then actually go and remove it." },
+            { "t": 1240, "text": "Letting go of the keyboard is a grieving process. Be kind to yourself." },
+            { "t": 1500, "text": "Your team's output is now your output. That's the whole shift." },
+            { "t": 1710, "text": "If we could go back, we'd ask for help in week one, not month six." }
+          ]
+        },
+        {
+          "id": "me-002",
+          "number": 2,
+          "title": "Feedback that lands",
+          "date": "2026-02-17",
+          "duration": 2100,
+          "summary": "Giving direct feedback without bruising the person or the relationship.",
+          "audio": "",
+          "chapters": [
+            { "start": 0, "title": "Intro" },
+            { "start": 120, "title": "Why we avoid it" },
+            { "start": 780, "title": "A simple structure" },
+            { "start": 1500, "title": "When it goes wrong" }
+          ],
+          "transcript": [
+            { "t": 0, "text": "Feedback. Everyone says they want it, and almost nobody gives it well." },
+            { "t": 120, "text": "We avoid it because we're worried about the relationship. Ironically, avoiding it is what damages the relationship." },
+            { "t": 540, "text": "Specific beats kind-but-vague every single time." },
+            { "t": 780, "text": "Here's the structure we keep coming back to: situation, behaviour, impact, and then a question." },
+            { "t": 1180, "text": "The question matters. It turns a verdict into a conversation." },
+            { "t": 1500, "text": "Sometimes it goes wrong anyway. Own it, say so, and try again next week." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "house-finesse",
+      "name": "House Finesse",
+      "tagline": "Deep, soulful and afro house. Since 2005.",
+      "colour": "#e11d48",
+      "initials": "HF",
+      "episodes": [
+        {
+          "id": "hf-001",
+          "number": 1,
+          "title": "Finesse Friday: sunrise sessions",
+          "date": "2026-03-06",
+          "duration": 3600,
+          "summary": "Sixty minutes of warm, rolling deep house for the early hours.",
+          "audio": "",
+          "chapters": [
+            { "start": 0, "title": "Warm up" },
+            { "start": 600, "title": "Rolling" },
+            { "start": 1500, "title": "Peak hour" },
+            { "start": 2700, "title": "Afro house detour" },
+            { "start": 3300, "title": "Come down" }
+          ],
+          "transcript": [
+            { "t": 0, "text": "[Intro] Easy does it. Let the first few tracks breathe." },
+            { "t": 600, "text": "[Track 3] Bassline comes in, hats tighten up." },
+            { "t": 1500, "text": "[Track 7] This is the one. Hands up if you know it." },
+            { "t": 2700, "text": "[Track 12] Heading south for a bit. Percussion first, always." },
+            { "t": 3300, "text": "[Outro] Last record. Thanks for listening, see you next Friday." }
+          ]
+        },
+        {
+          "id": "hf-002",
+          "number": 2,
+          "title": "Finesse Friday: vocal cuts",
+          "date": "2026-03-13",
+          "duration": 3480,
+          "summary": "Vocal-led house, soulful and a little bit sunny.",
+          "audio": "",
+          "chapters": [
+            { "start": 0, "title": "Opening cut" },
+            { "start": 900, "title": "Soulful stretch" },
+            { "start": 2400, "title": "Late set lift" }
+          ],
+          "transcript": [
+            { "t": 0, "text": "[Intro] A few vocals to start things off." },
+            { "t": 900, "text": "[Track 5] Slow it down, let the singer do the work." },
+            { "t": 2400, "text": "[Track 11] Bring the energy back up for the home stretch." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "si-cast",
+      "name": "Si Cast",
+      "tagline": "Side projects, tinkering and whatever's on the desk.",
+      "colour": "#059669",
+      "initials": "SC",
+      "episodes": [
+        {
+          "id": "sc-001",
+          "number": 1,
+          "title": "Building in public, badly",
+          "date": "2026-01-20",
+          "duration": 1380,
+          "summary": "A short, unpolished look at what's being built and why it's not finished.",
+          "audio": "",
+          "chapters": [
+            { "start": 0, "title": "What's on the desk" },
+            { "start": 300, "title": "The graveyard of half-finished things" },
+            { "start": 900, "title": "What's next" }
+          ],
+          "transcript": [
+            { "t": 0, "text": "Right, so this is Si Cast. It's me, a microphone, and an unreasonable number of side projects." },
+            { "t": 300, "text": "Every project starts with a weekend and ends with a domain name I keep renewing." },
+            { "t": 600, "text": "The trick is shipping something small enough to finish." },
+            { "t": 900, "text": "Next up: this very site, getting a proper player. Meta, I know." }
+          ]
+        }
+      ]
+    }
+  ]
+}
